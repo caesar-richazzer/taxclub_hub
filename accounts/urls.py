@@ -15,7 +15,10 @@ urlpatterns = [
     path('api/register/', views.RegisterView.as_view(), name='api-register'),
     path('api/profile/', views.ProfileView.as_view(), name='api-profile'),
     
+
     # JWT Auth (The ones that were causing the crash)
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
 ]

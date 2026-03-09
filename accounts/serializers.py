@@ -31,7 +31,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ('email', 'password', 'first_name', 'last_name', 'role', 
                   'phone_number', 'level', 'school_name', 'staff_id', 'department')
 
+   # accounts/serializers.py
+
     def create(self, validated_data):
+        # ... (keep your extraction code the same) ...
         level = validated_data.pop('level', None)
         school_name = validated_data.pop('school_name', '')
         staff_id = validated_data.pop('staff_id', '')
@@ -47,13 +50,14 @@ class RegisterSerializer(serializers.ModelSerializer):
             phone_number=validated_data.get('phone_number', '')
         )
 
+        # FIX: Use get_or_create to prevent the "DoesNotExist" error
         if user.role == UserRole.STUDENT:
-            profile = user.student_profile
+            profile, created = StudentProfile.objects.get_or_create(user=user)
             profile.level = level
             profile.school_name = school_name
             profile.save()
         else:
-            profile = user.staff_profile
+            profile, created = StaffProfile.objects.get_or_create(user=user)
             profile.staff_id = staff_id
             profile.department = department
             profile.save()

@@ -1,45 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="max-w-7xl mx-auto px-6 text-center">
-    <!-- Hero Block -->
-    <div class="mt-16 mb-32">
-        <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tighter">
-            #1 <span class="gold-text">Modern Hub</span> <br> for Tax Clubs
+<div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Hero Section -->
+    <section class="py-24 text-center">
+        <h1 class="text-6xl md:text-8xl font-bold tracking-tight mb-8">
+            One powerfully <br> <span class="gold-gradient">connected hub.</span>
         </h1>
-        <p class="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto mb-12 font-medium">
-            Kodi Yangu transforms complex tax education into shareable, digital club experiences for the next generation of Tanzanian leaders.
+        <p class="text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
+            Kodi Yangu brings students and staff together to transform tax education into a seamless, rewarding experience.
         </p>
-        <div class="flex justify-center">
-            <a href="{% url 'register-page' %}" class="btn-gold px-12 py-5 text-xl font-black">Register for Hub Access</a>
+        <div class="flex justify-center items-center space-x-6">
+            <a href="{% url 'register-page' %}" class="btn-apple text-lg px-10">Register Now</a>
+            <a href="#" class="text-blue-600 hover:underline text-lg">Learn more ></a>
+        </div>
+    </section>
+
+    <!-- Bento Grid Style Features -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+        
+        <!-- Large Feature Card -->
+        <div class="apple-card p-12 flex flex-col justify-center items-center text-center bg-white border border-gray-100">
+            <div class="w-20 h-20 mb-6 bg-yellow-50 rounded-3xl flex items-center justify-center">
+                <span class="text-4xl">🎓</span>
+            </div>
+            <h2 class="text-3xl font-bold mb-4">Everything that matters. <br> Saved and sound.</h2>
+            <p class="text-gray-500 text-lg">Your progress, club points, and national certifications are always synced and secure.</p>
+        </div>
+
+        <!-- 3-Step Process Block -->
+        <div class="apple-card p-12 bg-white border border-gray-100">
+            <h2 class="text-xl font-bold mb-10 text-center">Hub access in 3 steps</h2>
+            <div class="space-y-8">
+                <div class="flex items-center space-x-6">
+                    <div class="w-10 h-10 rounded-full bg-yellow-400 text-white flex items-center justify-center font-bold">1</div>
+                    <p class="text-gray-700 font-medium">Create your secure digital ID</p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="w-10 h-10 rounded-full bg-yellow-400 text-white flex items-center justify-center font-bold">2</div>
+                    <p class="text-gray-700 font-medium">Link with your School Club</p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="w-10 h-10 rounded-full bg-yellow-400 text-white flex items-center justify-center font-bold">3</div>
+                    <p class="text-gray-700 font-medium">Access national tax resources</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- 3-Step Process (The Cluely Step Style) -->
-    <div class="glass p-16 mb-20">
-        <h2 class="text-3xl font-bold mb-16 italic">Empowering your club in 3 steps</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            <div class="space-y-6">
-                <div class="glass w-full aspect-video flex items-center justify-center border-yellow-500/20">
-                    <span class="text-5xl">🎓</span>
-                </div>
-                <h3 class="text-2xl font-bold">1. Join Hub</h3>
-                <p class="text-gray-500">Students and Staff register to access the national Tax Club network.</p>
-            </div>
-            <div class="space-y-6">
-                <div class="glass w-full aspect-video flex items-center justify-center border-yellow-500/20">
-                    <span class="text-5xl">📖</span>
-                </div>
-                <h3 class="text-2xl font-bold">2. Acquire Data</h3>
-                <p class="text-gray-500">Learn real-world tax compliance through liquid interactive modules.</p>
-            </div>
-            <div class="space-y-6">
-                <div class="glass w-full aspect-video flex items-center justify-center border-yellow-500/20">
-                    <span class="text-5xl">🏆</span>
-                </div>
-                <h3 class="text-2xl font-bold">3. Earn Status</h3>
-                <p class="text-gray-500">Earn national points and lead your school to the top of the leaderboard.</p>
-            </div>
-        </div>
+    <!-- Privacy Message (Apple Style) -->
+    <div class="apple-card bg-gradient-to-b from-white to-yellow-50 p-16 text-center border border-yellow-100 mb-20">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 italic">More privacy. More protection. <br> More peace of mind.</h2>
+        <p class="text-gray-500 max-w-xl mx-auto">Kodi Yangu uses advanced encryption to ensure your educational data and staff records are visible only to authorized TRA officers.</p>
     </div>
+
 </div>
 {% endblock %}

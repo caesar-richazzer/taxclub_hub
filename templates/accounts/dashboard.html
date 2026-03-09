@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodi Yangu | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f7; color: #1d1d1f; }
+        .sidebar { width: 260px; background: #ffffff; border-right: 1px solid rgba(0,0,0,0.05); }
+        .apple-card { background: #fff; border-radius: 22px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.02); }
+        .gold-icon { color: #eab308; }
+        .nav-item:hover { background-color: #f5f5f7; border-radius: 12px; }
+        .active-nav { background-color: #f5f5f7; border-radius: 12px; color: #eab308; font-weight: 600; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Static Sidebar -->
+    <aside class="sidebar h-full flex flex-col p-6 hidden md:flex">
+        <div class="mb-10 px-2">
+            <h1 class="text-xl font-bold tracking-tight">Kodi <span class="text-yellow-600">Yangu</span></h1>
+        </div>
+
+        <nav class="flex-1 space-y-2">
+            <a href="#" class="nav-item active-nav flex items-center space-x-3 p-3 transition">
+                <i class="fa-solid fa-house-chimney text-sm"></i>
+                <span>Overview</span>
+            </a>
+            <a href="#" class="nav-item flex items-center space-x-3 p-3 text-gray-500 hover:text-black transition">
+                <i class="fa-solid fa-book-open text-sm"></i>
+                <span>Tax Resources</span>
+            </a>
+            <a href="#" class="nav-item flex items-center space-x-3 p-3 text-gray-500 hover:text-black transition">
+                <i class="fa-solid fa-users text-sm"></i>
+                <span>My Club</span>
+            </a>
+            <a href="#" class="nav-item flex items-center space-x-3 p-3 text-gray-500 hover:text-black transition">
+                <i class="fa-solid fa-trophy text-sm"></i>
+                <span>Leaderboard</span>
+            </a>
+        </nav>
+
+        <div class="mt-auto border-t pt-6 px-2">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-700 font-bold">
+                    {{ user.first_name|first }}
+                </div>
+                <div>
+                    <p class="text-xs font-bold">{{ user.get_full_name }}</p>
+                    <p class="text-[10px] text-gray-400 uppercase">{{ user.role }}</p>
+                </div>
+            </div>
+            <a href="{% url 'home' %}" class="block mt-4 text-xs text-red-500 font-bold hover:underline">Sign Out</a>
+        </div>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <main class="flex-1 overflow-y-auto p-8">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-10">
+            <div>
+                <h2 class="text-3xl font-bold tracking-tight">Welcome back, <span class="text-yellow-600">{{ user.first_name }}</span></h2>
+                <p class="text-gray-500">Here’s what’s happening in your Tax Hub today.</p>
+            </div>
+            <div class="flex space-x-4">
+                <button class="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition">
+                    <i class="fa-regular fa-bell text-gray-400"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Grid (Apple Bento Style) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="apple-card p-6 shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Total Points</p>
+                <p class="text-4xl font-bold">1,250 <span class="text-sm text-yellow-600">XP</span></p>
+                <div class="mt-4 h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-yellow-400 w-3/4"></div>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-2">Level 4 Citizen • 250 XP to next level</p>
+            </div>
+
+            <div class="apple-card p-6 shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Active Tasks</p>
+                <p class="text-4xl font-bold">04</p>
+                <p class="text-[10px] text-green-500 mt-2 font-bold">● 2 Tasks due today</p>
+            </div>
+
+            <div class="apple-card p-6 shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Club Ranking</p>
+                <p class="text-4xl font-bold">#12</p>
+                <p class="text-[10px] text-gray-400 mt-2">Top 5% of your school</p>
+            </div>
+        </div>
+
+        <!-- Main Content Block -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Tax Course Card -->
+            <div class="apple-card p-8 bg-gradient-to-br from-yellow-400 to-yellow-600 text-white">
+                <h3 class="text-2xl font-bold mb-2">Continue Learning</h3>
+                <p class="text-yellow-100 mb-6">Module 3: Understanding VAT for Small Businesses.</p>
+                <button class="bg-white text-yellow-600 px-6 py-2 rounded-full font-bold text-sm shadow-xl">Resume Course</button>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="apple-card p-8 shadow-sm">
+                <h3 class="text-lg font-bold mb-6">Recent Activity</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-check text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Completed "Intro to EFD" Quiz</p>
+                            <p class="text-[10px] text-gray-400">2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-8 h-8 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Earned "Patriot" Badge</p>
+                            <p class="text-[10px] text-gray-400">Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

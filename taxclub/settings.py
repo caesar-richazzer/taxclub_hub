@@ -32,13 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
     'rest_framework',
     'rest_framework_simplejwt',
 
@@ -132,3 +133,49 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Kodi Yangu Admin",
+    "site_header": "Kodi Yangu",
+    "site_brand": "KODI YANGU HUB",
+    "welcome_sign": "Welcome to the Tax Club Administration",
+    "copyright": "Kodi Yangu Ltd",
+    "search_model": ["accounts.CustomUser"],
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "View Site", "url": "/", "new_window": True},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "icons": {
+        "accounts.CustomUser": "fas fa-user",
+        "accounts.StudentProfile": "fas fa-user-graduate",
+        "accounts.StaffProfile": "fas fa-user-tie",
+    },
+    "order_with_respect_to": ["accounts", "auth"],
+    "theme": "flatly", # Clean Apple-like theme
+    "dark_mode_theme": "darkly",
+}
+
+JAZZMIN_UI_CONFIG = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "accent": "accent-warning", # Gold accents
+    "navbar": "navbar-dark bg-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-warning", # Gold sidebar highlights
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "lux",
+}

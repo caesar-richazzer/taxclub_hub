@@ -5,9 +5,10 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import CustomUser, UserRole
 from .serializers import RegisterSerializer, UserSerializer
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+# --- HTML TEMPLATE VIEWS (The Pages) ---
 
-# --- HTML TEMPLATE VIEWS ---
 class HomeLandingView(TemplateView):
     template_name = "home.html"
 
@@ -17,7 +18,13 @@ class LoginPageView(TemplateView):
 class RegisterPageView(TemplateView):
     template_name = "accounts/register.html"
 
-# --- API VIEWS ---
+# This is the one that was missing!
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = "accounts/dashboard.html"
+    login_url = '/login-ui/' # Redirects here if not logged in
+
+# --- API VIEWS (The Data) ---
+
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     permission_classes = (permissions.AllowAny,)
@@ -29,5 +36,3 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
-
-
