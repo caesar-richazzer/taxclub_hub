@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto px-6 h-[70vh] flex items-center">
+    <div class="glass p-12 w-full text-center border-white/5 shadow-2xl">
+        <h2 class="text-3xl font-black italic mb-2">Resume <span class="gold-text">Session</span></h2>
+        <p class="text-gray-500 mb-10 text-sm">Welcome back to the secure tax network.</p>
+
+        <form action="{% url 'token_obtain_pair' %}" method="POST" class="space-y-6">
+            <input type="email" name="email" placeholder="Email Address" class="w-full glass bg-white/5 p-4 rounded-xl outline-none focus:border-yellow-500 transition text-center" required>
+            <input type="password" name="password" placeholder="••••••••" class="w-full glass bg-white/5 p-4 rounded-xl outline-none focus:border-yellow-500 transition text-center" required>
+            
+            <button type="submit" class="btn-gold w-full py-4 text-lg">ACCESS TERMINAL</button>
+        </form>
+        
+        <p class="mt-8 text-xs text-gray-600">
+            Forgot credentials? <a href="#" class="text-yellow-500 hover:underline">Contact TRA Support</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

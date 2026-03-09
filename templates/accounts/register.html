@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-2xl mx-auto px-6 mb-20">
+    <div class="glass p-12 border-yellow-500/10 shadow-[0_0_50px_rgba(234,179,8,0.05)]">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-black italic mb-4">Initialize <span class="gold-text">Access</span></h2>
+            <p class="text-gray-500 font-medium">Select your role to start your meeting with the future.</p>
+        </div>
+
+        <form action="{% url 'api-register' %}" method="POST" class="space-y-6">
+            <div class="grid grid-cols-2 gap-6">
+                <input type="text" name="first_name" placeholder="First Name" class="glass bg-white/5 p-4 rounded-xl outline-none focus:border-yellow-500 transition" required>
+                <input type="text" name="last_name" placeholder="Last Name" class="glass bg-white/5 p-4 rounded-xl outline-none focus:border-yellow-500 transition" required>
+            </div>
+            <input type="email" name="email" placeholder="Corporate Email" class="w-full glass bg-white/5 p-4 rounded-xl outline-none focus:border-yellow-500 transition" required>
+            <input type="password" name="password" placeholder="Secure Password" class="w-full glass bg-white/5 p-4 rounded-xl outline-none focus:border-yellow-500 transition" required>
+
+            <div class="space-y-3">
+                <label class="text-xs font-bold uppercase tracking-widest text-yellow-500">Identify Role</label>
+                <select id="role" name="role" class="w-full glass bg-black/40 p-4 rounded-xl outline-none appearance-none cursor-pointer" onchange="toggleFields()">
+                    <option value="STUDENT">Active Student (Learner)</option>
+                    <option value="PATRON">Staff/Patron (Administrator)</option>
+                </select>
+            </div>
+
+            <!-- Dynamic Glass Fields -->
+            <div id="student-zone" class="p-6 glass bg-yellow-500/5 border-yellow-500/20">
+                <div class="space-y-4">
+                    <input type="text" name="school_name" placeholder="School Name" class="w-full bg-transparent border-b border-white/10 py-2 outline-none focus:border-yellow-500 transition">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-gold w-full py-5 text-xl tracking-tighter">CONFIRM MEMBERSHIP</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
